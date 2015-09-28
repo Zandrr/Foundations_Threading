@@ -1,4 +1,6 @@
-# CSCI 5828 &mdash Homework 3 &mdash Fall 2015
+# CSCI 5828 &mdash; Homework 3 &mdash; Fall 2015
+
+## Broken, version 2
 
 This directory contains the second version of the broken Java program for
 Homework 3. The only change is that all of the methods in the

@@ -1,4 +1,4 @@
-# CSCI 5828 &mdash Homework 3 &mdash Fall 2015
+# CSCI 5828 &mdash; Homework 3 &mdash; Fall 2015
 
 In this repository, you will find the two versions of the broken
 producer-consumer program that is associated with Homework 3 for
