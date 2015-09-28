@@ -19,6 +19,12 @@ Your goal is to create a new version of the program that:
     1. `Main.java`
     2. `Monitor.java`
     3. `Product.java`
+
+You may certainly add `println` statements to this program to debug it.
+But, do not mess with the original `println` statements that appear
+in the program and remove any additional `println` statements that
+you added to the program **before** you submit it.
+
 * You are done when the following things are true of your new program
   1. The program exits cleanly to the command prompt.
     * That is, all threads shut down cleanly at the end of your program.
