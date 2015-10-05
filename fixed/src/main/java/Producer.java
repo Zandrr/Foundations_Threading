@@ -4,7 +4,7 @@ import java.util.concurrent.locks.Lock;
 public class Producer implements Runnable {
 
 
-  private Lock lock = new ReentrantLock();
+  private static Lock lock = new ReentrantLock();
   private ProductionLine queue;
   private int id;
 
@@ -15,26 +15,28 @@ public class Producer implements Runnable {
 
   public void run() {
     for(int count = 0; count<20; count++){
-      Boolean enqueued = false;
-      while(!enqueued){
-        if (queue.size() < 10) {
-          Product p = new Product();
+          Product p;
+          lock.lock();
+          try{
+            p = new Product(); // make each producer take a turn on creating products.  One lock shared between all threads (static).
+          }finally{
+            lock.unlock();
+          }
           String msg = "Producer %d Produced: %s on iteration %d";
           System.out.println(String.format(msg, id, p, count));
-            queue.append(p);
-            enqueued = true;
-        }else{
           try{
-            Thread.sleep(100);
-          }catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
+            queue.append(p);
+          }catch(InterruptedException e){
+            //print
           }
-        }
-      }
     }
     Product p = new Product();
     p.productionDone();
+        try{
           queue.append(p);
+        }catch(InterruptedException e){
+          //print
+        }
 
     String msg = "Producer %d is done. Shutting down.";
     System.out.println(String.format(msg, id));
